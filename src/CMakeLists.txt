@@ -28,7 +28,15 @@ install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/lib${vicon_lib_name}.so
 # Create an executable program vicon-client
 add_executable(vicon-frames-updater vicon_frames_updater.cpp)
 pods_use_pkg_config_packages(vicon-frames-updater lcm bot2-frames lcmtypes_vicon)
-
 # make executable public
 pods_install_executables(vicon-frames-updater)
 
+
+# DEPRECATED:
+# A more complete driver which publishes individual marker positions
+# this mode should be incorporated into the main driver
+# Note this module uses lcmtypes that are not well defined.
+add_executable(vicon-client-segments vicon-segments-driver/ViconHolodeckDriver.cpp)
+target_link_libraries(vicon-client-segments lcm -l${vicon_lib_name})
+pods_use_pkg_config_packages(vicon-client-segments lcm lcmtypes_vicon)
+pods_install_executables(vicon-client-segments)
