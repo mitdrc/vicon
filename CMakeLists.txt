@@ -9,12 +9,4 @@ include(cmake/pods.cmake)
 include(cmake/lcmtypes.cmake)
 lcmtypes_build()
 
-# Main driver:
 add_subdirectory(src)
-
-
-# DEPRECATED:
-# A more complete driver which publishes individual marker positions
-# this mode should be incorporated into the main driver
-# Note this module uses lcmtypes that are not well defined.
-add_subdirectory(src/vicon-segments-driver)
